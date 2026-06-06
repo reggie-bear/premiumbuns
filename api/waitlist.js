@@ -25,7 +25,7 @@ module.exports = async function handler(req, res) {
         },
         body: JSON.stringify({
           from: 'Premium Buns <onboarding@resend.dev>',
-          to: ['reggie@bwhlabs.com'],
+          to: ['reggieblack@gmail.com'],
           subject: `New waitlist signup: ${email}`,
           html: `<p style="font-family:sans-serif">New signup on the <strong>Premium Buns</strong> waitlist:</p><p style="font-family:monospace;font-size:1.1em">${email}</p>`,
         }),
