@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Buns — Artisan Buns for Serious Cooks</title>
+  <meta name="description" content="Hand-crafted artisan buns made from stone-milled heritage flour. Slow-proofed 24 hours. Shipped fresh to serious cooks nationwide.">
+  <!-- Aesthetic: serious-baker editorial — warm parchment palette, Playfair Display serifs, asymmetric composition -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:     oklch(96%   0.025 82);
+      --parchment: oklch(91%   0.035 82);
+      --wheat:     oklch(74%   0.12  75);
+      --amber:     oklch(62%   0.17  68);
+      --bark:      oklch(36%   0.09  52);
+      --charcoal:  oklch(17%   0.015 60);
+      --muted:     oklch(54%   0.04  72);
+      --border:    oklch(84%   0.03  82);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4vw;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 88vh;
+      padding: 0 4vw;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 8vw, 7rem) 0;
+      padding-right: clamp(2rem, 5vw, 5rem);
+      border-right: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.25rem, 6.5vw, 6rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    .hero-body {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease-out, transform 0.15s ease-out;
+      width: fit-content;
+    }
+
+    .btn-primary:hover {
+      background: var(--bark);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 0 4rem clamp(2rem, 5vw, 5rem);
+    }
+
+    .bun-illustration {
+      width: clamp(240px, 36vw, 440px);
+      aspect-ratio: 1;
+      position: relative;
+    }
+
+    .bun-top {
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      right: 10%;
+      height: 58%;
+      background: radial-gradient(ellipse at 38% 32%, oklch(84% 0.14 80), oklch(60% 0.14 62));
+      border-radius: 60% 60% 48% 48%;
+    }
+
+    .bun-top::after {
+      content: '';
+      position: absolute;
+      top: 14%;
+      left: 12%;
+      width: 38%;
+      height: 22%;
+      background: oklch(90% 0.1 84);
+      border-radius: 50%;
+      filter: blur(8px);
+      opacity: 0.55;
+    }
+
+    .bun-seeds {
+      position: absolute;
+      top: 18%;
+      left: 20%;
+      right: 20%;
+      height: 30%;
+      z-index: 1;
+    }
+
+    .seed {
+      position: absolute;
+      width: 18px;
+      height: 9px;
+      background: oklch(52% 0.12 72);
+      border-radius: 50%;
+      transform: rotate(var(--r));
+    }
+
+    .bun-middle {
+      position: absolute;
+      top: 54%;
+      left: 5%;
+      right: 5%;
+      height: 10%;
+      background: linear-gradient(to bottom, oklch(48% 0.14 52), oklch(38% 0.1 44));
+    }
+
+    .bun-bottom {
+      position: absolute;
+      top: 63%;
+      left: 8%;
+      right: 8%;
+      height: 26%;
+      background: radial-gradient(ellipse at 45% 40%, oklch(82% 0.12 78), oklch(64% 0.13 68));
+      border-radius: 6px 6px 24px 24px;
+    }
+
+    .bun-shadow {
+      position: absolute;
+      bottom: 3%;
+      left: 15%;
+      right: 15%;
+      height: 6%;
+      background: var(--charcoal);
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.14;
+    }
+
+    /* ─── PROOF BAR ─── */
+    .proof-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 4vw;
+      display: flex;
+      align-items: center;
+      gap: clamp(1.5rem, 3vw, 3.5rem);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .proof-bar::-webkit-scrollbar { display: none; }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      white-space: nowrap;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .proof-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--amber);
+      flex-shrink: 0;
+    }
+
+    /* ─── MANIFESTO ─── */
+    .manifesto {
+      padding: clamp(4rem, 10vw, 8rem) 4vw;
+      display: grid;
+      grid-template-columns: 16rem 1fr;
+      gap: 4rem;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .manifesto-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      padding-top: 0.75rem;
+    }
+
+    .manifesto-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+      line-height: 1.5;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+
+    .manifesto-text em {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    /* ─── LINEUP ─── */
+    .lineup {
+      padding: clamp(4rem, 10vw, 8rem) 4vw;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .section-meta {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .lineup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .product-card {
+      padding: 2.5rem 2rem 2.5rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s ease;
+    }
+
+    .product-card:last-child { border-right: none; }
+    .product-card:hover { background: var(--parchment); }
+
+    .product-num {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.75rem;
+    }
+
+    .product-swatch {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 3px;
+      margin-bottom: 1.75rem;
+    }
+
+    .product-card:nth-child(1) .product-swatch {
+      background: radial-gradient(ellipse at 40% 35%, oklch(86% 0.12 82), oklch(68% 0.14 68));
+    }
+
+    .product-card:nth-child(2) .product-swatch {
+      background: radial-gradient(ellipse at 38% 32%, oklch(52% 0.1 58), oklch(30% 0.08 46));
+    }
+
+    .product-card:nth-child(3) .product-swatch {
+      background: radial-gradient(ellipse at 42% 36%, oklch(92% 0.07 86), oklch(74% 0.1 74));
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-desc {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bark);
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.75rem;
+    }
+
+    /* ─── PROCESS ─── */
+    .process {
+      padding: clamp(4rem, 10vw, 8rem) 4vw;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+
+    .process-list { display: flex; flex-direction: column; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.25rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-step:first-child { border-top: 1px solid var(--border); }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      color: var(--border);
+      line-height: 1;
+      padding-top: 0.125rem;
+    }
+
+    .step-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .process-callout {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .process-callout em {
+      font-style: italic;
+      color: var(--bark);
+      display: block;
+    }
+
+    /* ─── WAITLIST ─── */
+    .waitlist {
+      padding: clamp(4rem, 10vw, 8rem) 4vw;
+      background: var(--charcoal);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .waitlist-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-top: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .waitlist-left p {
+      font-size: 1rem;
+      color: oklch(72% 0.015 80);
+      line-height: 1.75;
+      max-width: 44ch;
+    }
+
+    .waitlist-eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--wheat);
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid oklch(30% 0.015 60);
+    }
+
+    .waitlist-form input {
+      padding: 1.125rem 1.25rem;
+      background: oklch(22% 0.015 60);
+      border: none;
+      border-bottom: 1px solid oklch(28% 0.015 60);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 300;
+      outline: none;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+
+    .waitlist-form input::placeholder { color: oklch(48% 0.02 70); }
+    .waitlist-form input:focus { background: oklch(24% 0.015 60); }
+
+    .waitlist-form input:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: -2px;
+    }
+
+    .waitlist-form button {
+      padding: 1.125rem 1.25rem;
+      background: var(--amber);
+      color: var(--charcoal);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      text-align: left;
+    }
+
+    .waitlist-form button:hover {
+      background: var(--wheat);
+      transform: translateY(-1px);
+    }
+
+    .waitlist-note {
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      color: oklch(48% 0.02 70);
+    }
+
+    .success-msg {
+      display: none;
+      padding: 1.5rem;
+      background: oklch(22% 0.015 60);
+      border: 1px solid oklch(30% 0.015 60);
+      font-size: 0.9375rem;
+      color: var(--wheat);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 1.75rem 4vw;
+      background: oklch(13% 0.012 60);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: oklch(44% 0.02 70);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .manifesto { grid-template-columns: 1fr; gap: 1.25rem; }
+      .process { grid-template-columns: 1fr; }
+      .process-callout { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+      .waitlist { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; }
+      .hero-right { padding: 3rem 0; justify-content: flex-start; }
+      .lineup-grid { grid-template-columns: 1fr; }
+      .product-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .product-card:last-child { border-bottom: none; }
+      .nav-links { gap: 1.5rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Premium Buns</a>
+    <ul class="nav-links">
+      <li><a href="#lineup">The Lineup</a></li>
+      <li><a href="#craft">Our Craft</a></li>
+      <li><a href="#waitlist">Waitlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Artisan · Small Batch · Ship to Door</p>
+      <h1 class="hero-headline">The bun<br>is not an<br><em>afterthought.</em></h1>
+      <p class="hero-body">
+        Premium Buns are hand-crafted from stone-milled heritage flour,
+        slow-proofed over 24 hours, and shipped fresh to serious cooks
+        who know the difference.
+      </p>
+      <a href="#waitlist" class="btn-primary">Join the Waitlist →</a>
+    </div>
+    <div class="hero-right">
+      <div class="bun-illustration" aria-hidden="true">
+        <div class="bun-top"></div>
+        <div class="bun-seeds">
+          <div class="seed" style="top:30%;left:28%;--r:-25deg;"></div>
+          <div class="seed" style="top:15%;left:48%;--r:10deg;"></div>
+          <div class="seed" style="top:35%;left:62%;--r:30deg;"></div>
+          <div class="seed" style="top:55%;left:38%;--r:-15deg;"></div>
+          <div class="seed" style="top:20%;left:36%;--r:40deg;"></div>
+          <div class="seed" style="top:45%;left:55%;--r:-35deg;"></div>
+        </div>
+        <div class="bun-middle"></div>
+        <div class="bun-bottom"></div>
+        <div class="bun-shadow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF BAR -->
+  <div class="proof-bar" role="list" aria-label="Key attributes">
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>Stone-milled flour</span>
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>24-hour cold proof</span>
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>No preservatives</span>
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>Ships nationwide</span>
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>Baked to order</span>
+    <span class="proof-item" role="listitem"><span class="proof-dot"></span>Heritage wheat</span>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="craft">
+    <p class="manifesto-label">The Standard</p>
+    <p class="manifesto-text">
+      Most buns are a delivery vehicle. Soft, forgettable, <em>in the way.</em>
+      We think the bun is half the bite — every batch slow-fermented,
+      hand-shaped, and built to hold up to the serious cook who spent
+      three days on the filling.
+    </p>
+  </section>
+
+  <!-- LINEUP -->
+  <section class="lineup" id="lineup">
+    <div class="section-header">
+      <h2 class="section-title">The Lineup</h2>
+      <span class="section-meta">Three varieties</span>
+    </div>
+    <div class="lineup-grid">
+
+      <div class="product-card">
+        <p class="product-num">01</p>
+        <div class="product-swatch" role="img" aria-label="Classic Brioche bun — warm golden color"></div>
+        <h3 class="product-name">Classic Brioche</h3>
+        <p class="product-desc">
+          Rich, pillowy, and just sweet enough. Made with cultured butter
+          and whole eggs from pasture-raised hens. The universal premium
+          bun — pairs with everything from smash to lobster.
+        </p>
+        <span class="product-tag">Most popular</span>
+      </div>
+
+      <div class="product-card">
+        <p class="product-num">02</p>
+        <div class="product-swatch" role="img" aria-label="Dark Pretzel bun — deep brown color"></div>
+        <h3 class="product-name">Dark Pretzel</h3>
+        <p class="product-desc">
+          Lye-dipped for that true crust. Deep brown, chewy, slightly
+          bitter. Built for smash burgers, brats, and anything that
+          deserves a sharp mustard and a serious bun to hold it.
+        </p>
+        <span class="product-tag">For the bold</span>
+      </div>
+
+      <div class="product-card">
+        <p class="product-num">03</p>
+        <div class="product-swatch" role="img" aria-label="Potato Milk bun — pale golden color"></div>
+        <h3 class="product-name">Potato Milk</h3>
+        <p class="product-desc">
+          Impossibly tender crumb from Yukon Gold potato. Stays fresh
+          a full day longer, tears beautifully, absorbs sauce without
+          losing structure. The sleeper pick of serious burger cooks.
+        </p>
+        <span class="product-tag">Sleeper pick</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-list">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <h3>Milled in-house</h3>
+          <p>Heritage wheat, stone-milled fresh for each batch. No bleached flour, no compromises on the base.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <h3>24-hour cold proof</h3>
+          <p>Slow fermentation builds the flavor and structure that a same-day bun will never have. Time is the ingredient.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <h3>Hand-shaped, always</h3>
+          <p>Every bun is shaped by hand. No molds, no uniformity theater — real bakery process, every time.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <h3>Shipped same-day</h3>
+          <p>Packed in insulated kraft and shipped fresh. In your hands within 48 hours of the bake.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="process-callout">Made for cooks<br>who know better<br><em>than to settle.</em></p>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist" id="waitlist">
+    <div class="waitlist-left">
+      <p class="waitlist-eyebrow">Coming Soon</p>
+      <h2>Be first<br>in line.</h2>
+      <p>
+        We're launching to a small group of early customers.
+        Join the waitlist and we'll reach out before we open
+        to anyone else.
+      </p>
+    </div>
+    <div class="waitlist-right">
+      <form class="waitlist-form" id="waitlistForm" novalidate>
+        <input type="email" id="emailInput" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Reserve my spot →</button>
+      </form>
+      <div class="success-msg" id="successMsg" role="alert" aria-live="polite">
+        You're on the list. We'll be in touch before we launch.
+      </div>
+      <p class="waitlist-note" id="waitlistNote">No spam. Just a heads-up when we open.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-brand">Premium Buns</span>
+    <span class="footer-copy">© 2026 PremiumBuns.com · All rights reserved</span>
+  </footer>
+
+  <script>
+    const form = document.getElementById('waitlistForm');
+    const note = document.getElementById('waitlistNote');
+    const success = document.getElementById('successMsg');
+    const btn = form.querySelector('button');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const input = document.getElementById('emailInput');
+      if (!input.value || !input.validity.valid) { input.focus(); return; }
+
+      btn.textContent = 'Saving…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: input.value }),
+        });
+        if (!res.ok) throw new Error();
+        form.style.display = 'none';
+        note.style.display = 'none';
+        success.style.display = 'block';
+      } catch {
+        btn.textContent = 'Try again →';
+        btn.disabled = false;
+        input.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
